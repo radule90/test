@@ -27,7 +27,7 @@ for (let button of buttons) {
         yourChoice.innerHTML = userChoice;    randomComputerChoice();
         chooseWinner();
         incrementScore();
-        setTimeout(roundWin(), 2000);
+        roundWin();
     });
     
 }
