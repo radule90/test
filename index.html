@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock, Paper, Scissors</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/script.js" defer></script>
+</head>
+<body>
+    <main>
+        <section class="game-area">
+            <h1>Welcome to da GAME!!!</h1>
+            <div class="scoreboard">
+                <p>Player: <span id="you-score">0</span></p>
+                <p>Draw: <span id="draw-score">0</span></p>
+                <p>Computer: <span id="computer-score">0</span></p>
+            </div>
+
+            <div class="possible-choices">
+                <button class="choices" data-selection="rock">🪨</button>
+                <button class="choices" data-selection="paper">🧻</button>
+                <button class="choices" data-selection="scissors">✂️</button>
+            </div>
+            <div id="end"></div>
+            <div class="choice">
+                <div class="player-choice">Your choice: <span id="your-choice-display"></span></div>
+                <div class="computer-choice">Computer choice: <span id="computer-choice-display"></span></div>
+                <div>Result: <span id="result-display"></span></div>
+            </div>
+            <div id="win-message"><p>Pobedio si stari! Virovo sam u tebe!</p><span id="close" class="close">Zatvori</span></div>
+            <div id="lose-message"><p>Jednom gubitnik, uvek gubitnik!</p>
+            <p>I SALABAJZER!</p><span id="closeLos"  class="close">Zatvori</span></div>
+        </section>
+    </main>
+</body>
+</html>
