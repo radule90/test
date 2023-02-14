@@ -119,11 +119,13 @@ body {
 .choices {
     background-color: transparent;
     border: none;
-    font-size: 2rem;
+    font-size: 3rem;
     -webkit-filter: drop-shadow(0 0 2px #8f3d74);
             filter: drop-shadow(0 0 2px #8f3d74);
     cursor: pointer;
+    align-self: center;
 }
+
 
 .choices:hover {
     -webkit-transform: scale(1.25);
