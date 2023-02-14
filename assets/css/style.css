@@ -108,7 +108,7 @@ body {
 
 /* Possible choices styles and layout */
 .possible-choices {
-    width: 100%;
+    max-width: 100%;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -117,10 +117,9 @@ body {
 }
 
 .choices {
-    display: block;
     background-color: transparent;
     border: none;
-    font-size: 3rem;
+    font-size: 2rem;
     -webkit-filter: drop-shadow(0 0 2px #8f3d74);
             filter: drop-shadow(0 0 2px #8f3d74);
     cursor: pointer;
