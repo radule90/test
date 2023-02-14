@@ -117,7 +117,7 @@ body {
 }
 
 .choices {
-    display: inline-block;
+    display: block;
     background-color: transparent;
     border: none;
     font-size: 3rem;
