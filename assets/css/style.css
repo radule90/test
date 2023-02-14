@@ -1,65 +1,332 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
+/* Google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&family=Roboto:wght@400;500;900&display=swap');
+
+
+/* CSS Reset */
 *, *::before, *::after {
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
     margin: 0;
 }
 
-html {
-    max-width: 100%;
-    height: 100vh;
-}
-
-
-.game-area { position: fixed;
-    top: 50%;
-    left: 50%;
-    /* bring your own prefixes */
-    transform: translate(-50%, -50%);
-    width: 70%;
+/* General body layout */
+body {
+    width: 100%;
+    min-height: 100vh;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    gap: 6rem;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    font-family: 'Roboto', sans-serif;
 }
 
-.scoreboard {
+/* Header styles */
+.header {
+    background-color: #1f1f1f;
+    color: white;
+    text-align: center;
+    padding-block: 1.75rem;
 }
 
+.home-link {
+    text-decoration: none;
+    color: #ff7c94;
+}
+
+.home-link:hover {
+    color: white;
+    -webkit-transition: all .3s linear;
+    -o-transition: all .3s linear;
+    transition: all .3s linear;
+}
+
+
+/* Game area style*/
+/* Main area layout to center card in middle */
+.main-area {
+    background-image: -o-linear-gradient(45deg, #b78cf7,#ff7c94,#ffcf0d);
+    background-image: linear-gradient(45deg, #b78cf7,#ff7c94,#ffcf0d);
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+}
+
+/* Game area card style and layout */
+.game-area {
+    width: 80%;
+    max-width: 600px;
+    margin-inline: auto;
+    margin-block: 5vh;
+    padding: 1.5rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    gap: 3.75rem;
+    background-color: #ffe6eb;
+    color: #8f3d74;
+    -webkit-box-shadow: 0 0 8px #8f3d74;
+            box-shadow: 0 0 8px #8f3d74;
+    border-radius: 1rem;
+}
+
+.game-area > h2 {
+    font-size: 2rem;
+}
+
+/* Possible choices styles and layout */
 .possible-choices {
-
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
 }
+
 .choices {
     background-color: transparent;
     border: none;
-    outline: none;
     font-size: 3rem;
+    -webkit-filter: drop-shadow(0 0 2px #8f3d74);
+            filter: drop-shadow(0 0 2px #8f3d74);
+    cursor: pointer;
 }
 
 .choices:hover {
-    transform: scale(1.25);
+    -webkit-transform: scale(1.25);
+        -ms-transform: scale(1.25);
+            transform: scale(1.25);
+    -webkit-transition: all .5s linear;
+    -o-transition: all .5s linear;
     transition: all .5s linear;
 }
 
-#win-message,
-#lose-message  {
-    display: none;
-    background-color: rgba(0, 0, 0, 0.8);
-    position: fixed;
-    z-index: 99;
-    left: 0;
-    top: 0;
+.game-choice > p {
+    font-weight: bold;
+}
+
+.game-choice-display {
+    font-weight: 400;
+    color: #b78cf7;
+}
+
+#result-display {
+    font-weight: bold;
+}
+
+
+/* Scoreboard table styles */
+/* For more information i have read article https://developer.mozilla.org/en-US/docs/Learn/HTML/Tables */
+.scoreboard {
+    text-align: center;
+}
+
+caption {
+    font-size: 1.25rem;
+    font-weight: bold;
+    -webkit-margin-after: 1em;
+            margin-block-end: 1em;
+}
+
+table {
+    table-layout: fixed;
     width: 100%;
-    height: 100%;
+    margin-inline: auto;
+}
+
+td,
+th {
+    padding: .5rem;
+    border-radius: 1.25rem;
+}
+
+th {
+    -webkit-box-shadow: 0 0 2px #8f3d74;
+            box-shadow: 0 0 2px #8f3d74;
+}
+
+/* Change result score fiield color */
+.green-field {
+    background-color: rgba(0, 128, 0, 0.527);
     color: white;
 }
 
+.orange-field {
+    background-color: rgba(255, 166, 0, 0.521);
+}
 
-.green-win{
-    border: 5px solid green;
+.red-field {
+    background-color: rgba(255, 0, 0, 0.445);
+    color:white;
 }
-.red-lose {
-    border: 5px solid red;
+
+
+/* Style for win and lost messages */
+/* Sets win/lost message size, style and hide it */
+#win-message,
+#lost-message {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: hsla(0, 0%, 12%, 0.75);
 }
-.orange-draw {
-    border: 5px solid orange;
+
+/* Layout and style for win/lost message */
+.message-wrap {
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    gap: 2rem;
+    padding: 15%;
+    color: white;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.message-icon {
+    font-size: 4rem;
+}
+
+/* Style for win/lost message card button */
+.close {
+    background-color: #ffcf0d;
+    border: none;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    margin-inline: auto;
+    font-size: inherit;
+    padding: .5em;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: white;
+    background-color:#ff7c94;
+    -webkit-transition: all .3s linear;
+    -o-transition: all .3s linear;
+    transition: all .3s linear;
+}
+
+/* Center text with icon*/
+.center-icon {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+}
+
+
+/* Footer style */
+.footer {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    gap: 2rem;
+    background-color: #1f1f1f;
+    color: white;
+    -webkit-padding-before: 1.75rem;
+            padding-block-start: 1.75rem;
+    text-align: center;
+}
+
+.footer > h2 {
+    color: #ffcf0d;
+}
+
+
+/* Error 404 page styles */
+.error-area {
+    text-align: center;
+    gap: 3rem;
+
+}
+
+.error-title {
+    font-size: 3.5rem;
+}
+
+.error-text {
+    font-size: 1.5rem;
+}
+
+.error-icon {
+    font-size: 5rem;
+}
+
+/* Homepage button style */
+.error-link {
+    text-decoration: none;
+    background-color: #8f3d74;
+    color: white;
+    padding: 1em 1.25em;
+    border-radius: 1rem;
+}
+
+.error-link:hover {
+    background-color: #ffcf0d;
+    color: #1f1f1f;
+    -webkit-transition: all .3s linear;
+    -o-transition: all .3s linear;
+    transition: all .3s linear;
 }

@@ -4,35 +4,115 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rock, Paper, Scissors</title>
+    <meta name="description" content="Rock Paper Scissors Game">
+    <meta name="keywords" content="rock, paper scissors, game">
+    <!-- Favicon icons are from https://getemoji.com/ and generated with https://www.favicon-generator.org/ -->
+    <link rel="apple-touch-icon" sizes="57x57" href="assets/img/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="assets/img/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/img/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/img/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="assets/img/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="assets/img/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/img/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="assets/img/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="assets/img/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="assets/js/script.js" defer></script>
+    <title>Rock Paper Scissors Game</title>
 </head>
 <body>
-    <main>
+    <header class="header">
+        <h1><a class="home-link" href="#">Rock Paper Scissors</a></h1>
+    </header>
+    <main class="main-area">
         <section class="game-area">
-            <h1>Welcome to da GAME!!!</h1>
-            <div class="scoreboard">
-                <p>Player: <span id="you-score">0</span></p>
-                <p>Draw: <span id="draw-score">0</span></p>
-                <p>Computer: <span id="computer-score">0</span></p>
-            </div>
-
+            <h2>Let&apos;s Play!</h2>
+            <!-- Wrapper for possible game choices -->
             <div class="possible-choices">
-                <button class="choices" data-selection="rock">🪨</button>
-                <button class="choices" data-selection="paper">🧻</button>
-                <button class="choices" data-selection="scissors">✂️</button>
+                <button data-selection="Rock" class="choices" aria-label="Rock">🪨</button>
+                <button data-selection="Paper" class="choices" aria-label="Paper">📃</button>
+                <button data-selection="Scissors" class="choices" aria-label="Scissors">✂️</button>
             </div>
-            <div id="end"></div>
-            <div class="choice">
-                <div class="player-choice">Your choice: <span id="your-choice-display"></span></div>
-                <div class="computer-choice">Computer choice: <span id="computer-choice-display"></span></div>
-                <div>Result: <span id="result-display"></span></div>
+            <!-- Wrapper for user and computer choices and score -->
+            <div class="game-choice">
+                <p>User choice: <span id="user-choice-display" class="game-choice-display"></span></p>
+                <p>Computer choice: <span id="computer-choice-display" class="game-choice-display"></span></p>
+                <p>Result: <span id="result-display" class="game-choice-display"></span></p>
             </div>
-            <div id="win-message"><p>Pobedio si stari! Virovo sam u tebe!</p><span id="close" class="close">Zatvori</span></div>
-            <div id="lose-message"><p>Jednom gubitnik, uvek gubitnik!</p>
-            <p>I SALABAJZER!</p><span id="closeLos"  class="close">Zatvori</span></div>
+            <!-- For more information i have read article https://developer.mozilla.org/en-US/docs/Learn/HTML/Tables -->
+            <!-- Wrapper for table scoreboard/result part of the game -->
+            <div class="scoreboard">
+                <table>
+                    <caption>Scoreboard</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">USER</th>
+                            <th scope="col">DRAW</th>
+                            <th scope="col">CP</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="user-score" class="green-field">0</td>
+                            <td id="draw" class="orange-field">0</td>
+                            <td id="computer-score" class="red-field">0</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- Wrapper for pop up win message -->
+            <div id="win-message">
+                <!-- Wrapper for message layout -->
+                <div class="message-wrap">
+                    <p>Congratulations, you have won 10 games!</p>
+                    <p class="center-icon">
+                        <!-- Span wrapper for decoration icon -->
+                        <span class="message-icon">🎆</span> Bravo!!! <span class="message-icon">🎆</span>
+                    </p>
+                    <!-- Wrapepr for decoration content -->
+                    <div class="message-icon">🤗 🤗 🤗</div>
+                    <p>Continue the winning streak!</p>
+                    <button id="close-win" class="close" aria-label="Starts new game">Let&apos;s Play!</button>
+                </div>
+            </div>
+            <!-- Wrapper for pop up lost message -->
+            <div id="lost-message">
+                <!-- Wrapper for message layout -->
+                <div class="message-wrap">
+                    <p>Unfortunately, you lost 10 games!</p>
+                    <!-- Wrapepr for decoration content -->
+                    <div class="message-icon">😥 😥 😥</div>
+                    <p>Ready for another try?</p>
+                    <p>You might have better luck!</p>
+                    <button id="close-lost" class="close" aria-label="Starts new game">Let&apos;s Try!</button>
+                </div>
+            </div>
         </section>
     </main>
+    <footer class="footer">
+        <h2>Rules</h2>
+        <!-- Wrapepr for layout content -->
+        <div>
+            <p>⭐ Rock beats scissors ⭐</p>
+            <p>⭐ Scissors beats paper ⭐</p>
+            <p>⭐ Paper beats rock ⭐</p>
+        </div>
+        <!-- Wrapepr for decoration content -->
+        <div>🌟 🌟 🌟</div>
+        <p>Whoever wins 10 games first is the winner!</p>
+        <!-- Wrapepr for decoration content -->
+        <div>🌟 🌟 🌟</div>
+        <p>&copy; 2023 <a aria-label="Link to the home page" class="home-link" href="index.html">Rock Paper Scissors Game</a></p>
+    </footer>
+
+    
 </body>
 </html>

@@ -1,129 +1,151 @@
-const yourScore = document.getElementById("you-score");
-const drawScore = document.getElementById("draw-score");
-const computerScore = document.getElementById("computer-score");
+/**
+ * Declare variables for DOM elements
+ */
+
 const buttons = document.querySelectorAll("[data-selection]");
-const yourChoice = document.getElementById("your-choice-display");
-const computerChoice = document.getElementById("computer-choice-display");
-const result = document.getElementById("result-display");
+const userChoiceDisplay = document.getElementById("user-choice-display");
+const computerChoiceDisplay = document.getElementById("computer-choice-display");
+const resultDisplay = document.getElementById("result-display");
+const userScore = document.getElementById("user-score");
+const draw = document.getElementById("draw");
+const computerScore = document.getElementById("computer-score");
+
+const winMessage = document.getElementById("win-message");
+const lostMessage = document.getElementById("lost-message");
+
+
 let userChoice;
 let computerChoiceName;
-let decision;
-let computerWins = 0;
+let selection;
+
 let userWins = 0;
+let computerWins = 0;
 let drawGames = 0;
-let winMessage = document.getElementById("win-message");
-let loseMessage = document.getElementById("lose-message");
-let closeMessage = document.getElementsByClassName("close");
-
-
 
 /**
- * Add event listener to all the buttons and run game compare function
+ * Add event listener to all the buttons
  */
 
 for (let button of buttons) {
-    button.addEventListener("click", function() {
+        button.addEventListener("click", function() {
         userChoice = this.getAttribute("data-selection");
-        yourChoice.innerHTML = userChoice;    randomComputerChoice();
-        chooseWinner();
+        userChoiceDisplay.innerHTML = userChoice;
+        randomComputerChoice();
+        selectWinner();
         incrementScore();
         roundWin();
     });
-    
 }
 
+
 /**
- * Computer random choice function
+ * Generates computer random choice and associate the name to number
  */
+
 function randomComputerChoice() {
     const randomNumber = Math.floor(Math.random() * buttons.length + 1);
- 
- switch(randomNumber) {
-     case 1:
-         computerChoiceName = "rock";
-         break;
-     case 2:
-         computerChoiceName = "paper";
-         break;
-     case 3:
-         computerChoiceName = "scissors";
-         break;
- }
-     computerChoice.innerHTML = computerChoiceName;
- }
+    switch(randomNumber) {
+        case 1:
+            computerChoiceName = "Rock";
+            break;
+        case 2:
+            computerChoiceName = "Paper";
+            break;
+        case 3:
+            computerChoiceName = "Scissors";
+            break;
+    }
+
+    computerChoiceDisplay.innerHTML = computerChoiceName;
+}
 
 
 /**
- * Function to compare results
+ * Compare results and selects winner
  */
-function chooseWinner() {
-if(userChoice === computerChoiceName) {
-    decision = "Draw";
-} else if(userChoice === "rock" && computerChoiceName === "paper") {
-    decision = 'you lose';
-} else if (userChoice === 'paper' && computerChoiceName === "rock") {
-    decision = 'you win';
-} else if (userChoice === 'paper' && computerChoiceName === "scissors") {
-    decision = 'you lose';
-} else if (userChoice === 'scissors' && computerChoiceName === 'paper') {
-    decision = 'you win';
-} else if (userChoice === 'scissors' && computerChoiceName === "rock") {
-    decision = 'you lose';
-} else if (userChoice === 'rock' && computerChoiceName === "scissors") {
-    decision = 'you win';
-  }
-result.innerHTML = decision;
+
+function selectWinner() {
+    if (userChoice === computerChoiceName) {
+        selection = "It's a draw!";
+    } else if (userChoice === "Rock" && computerChoiceName === "Paper") {
+        selection = "You lost!";
+    } else if (userChoice === "Paper" && computerChoiceName === "Rock") {
+        selection = "You won!!!";
+    } else if (userChoice === "Paper" && computerChoiceName === "Scissors") {
+        selection = "You lost!";
+    } else if (userChoice === "Scissors" && computerChoiceName === "Paper") {
+        selection = "You won!!!";
+    } else if (userChoice === "Scissors" && computerChoiceName === "Rock") {
+        selection = "You lost!";
+    } else if (userChoice === "Rock" && computerChoiceName === "Scissors") {
+        selection = "You won!!!";
+      }
+
+    resultDisplay.innerHTML = selection;
 }
 
 
 /**
  * Function counts and increment score
  */
+
 function incrementScore() {
-    if (decision === 'you win') {
-        ++userWins; 
-    } else if (decision === 'you lose') {
+    if (selection === "You won!!!") {
+        ++userWins;
+    } else if (selection === "You lost!") {
         ++computerWins;
     } else {
         ++drawGames;
     }
-    yourScore.innerHTML = userWins;
-    drawScore.innerHTML = drawGames;
+
+    userScore.innerHTML = userWins;
     computerScore.innerHTML = computerWins;
+    draw.innerHTML = drawGames;
 }
 
 
+/**
+ * Check if someone has 10 wins,
+ * display win/lost message,
+ * calls reset function
+ */
 
 function roundWin() {
-     if (userWins === 10) {
+    if (userWins === 10) {
         winMessage.style.display = "block";
-       
         resetGame();
     } else if (computerWins === 10) {
-        loseMessage.style.display = "block";
+        lostMessage.style.display = "block";
         resetGame();
-    } 
-    
-}
-
-window.onclick = function(event) {
-    if (event.target.id === 'close') {
-        winMessage.style.display  = "none";
-    } else if (event.target.id === 'closeLos') {
-        loseMessage.style.display = "none";
     }
 }
 
 
+/**
+ * Add event listener to message buttons
+ */
 
-function resetGame(){
-    yourScore.innerHTML = 0;
-    drawScore.innerHTML = 0;
+window.onclick = function(event) {
+    if (event.target.id === "close-win") {
+        winMessage.style.display = "none";
+    } else if (event.target.id === "close-lost") {
+        lostMessage.style.display = "none";
+    }
+}
+
+
+/**
+ * Resets all values to 0 and empty strings
+ */
+
+function resetGame() {
+    userChoice.innerHTML = "";
+    computerChoiceName.innerHTML = "";
+    resultDisplay.innerHTML = "";
+    userScore.innerHTML = 0;
     computerScore.innerHTML = 0;
+    draw.innerHTML = 0;
     userWins = 0;
-    computerWins = 0;
     drawGames = 0;
-    yourChoice.innerHTML = "";
-    computerChoice.innerHTML = "";
-    result.innerHTML = "";
+    computerWins = 0;
 }
