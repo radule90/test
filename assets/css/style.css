@@ -330,3 +330,11 @@ th {
     -o-transition: all .3s linear;
     transition: all .3s linear;
 }
+
+
+@supports (-webkit-touch-callout: none) and (not (translate: none)) {
+    &:not(:last-child) {
+      margin-right: 5%;
+    }
+  }
+`;
