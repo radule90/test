@@ -113,9 +113,7 @@ body {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+    -ms-flex-pack: distribute;justify-content: space-around;
        
 }
 
@@ -126,7 +124,7 @@ body {
     -webkit-filter: drop-shadow(0 0 2px #8f3d74);
             filter: drop-shadow(0 0 2px #8f3d74);
     cursor: pointer;
-   /*  align-self: center; */
+align-self: center;
 }
 
 
