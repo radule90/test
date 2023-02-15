@@ -109,7 +109,7 @@ body {
 
 /* Possible choices styles and layout */
 .possible-choices {
-    max-width: 100%;
+    width: 100%;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
