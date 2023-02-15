@@ -113,8 +113,8 @@ body {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -ms-flex-pack: distribute;
-        justify-content: space-evenly;
+    -webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;
+       
 }
 
 .choices {
