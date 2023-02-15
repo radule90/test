@@ -126,7 +126,7 @@ body {
     -webkit-filter: drop-shadow(0 0 2px #8f3d74);
             filter: drop-shadow(0 0 2px #8f3d74);
     cursor: pointer;
-    align-self: center;
+   /*  align-self: center; */
 }
 
 
